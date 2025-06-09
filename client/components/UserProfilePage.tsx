@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useParams } from 'react-router'
 import { useUserProfile, useUserAdventures } from '../hooks/api'
-import { Adventure } from '../../models/models'
+import { Adventure } from '../models/models'
 
 import ProfileDetails from './ProfileDetails'
 import ProfileSummaryStats from './ProfileSummaryStats'
