@@ -5,11 +5,19 @@ import {
 } from 'react-router'
 
 import App from './components/App'
-import Home from './components/Home'
+import NavLog from './components/NavLog'
+import LogCave from './components/LogCave'
+import UserProfilePage from './components/UserProfilePage'
+import Dashboard from './components/Dashboard'
 
 const routes = createRoutesFromElements(
   <Route path="/" element={<App />}>
-    <Route index element={<Home />} />
+    <Route index element={<Dashboard />} />
+    <Route path="log-nav" element={<NavLog />} />
+    <Route path="log-cave" element={<LogCave />} />
+
+    {/* User profile with dynamic username param */}
+    <Route path="user/:username" element={<UserProfilePage />} />
   </Route>
 )
 
