@@ -7,10 +7,15 @@ function App() {
   return (
     <div className="app min-h-screen bg-gray-50">
       <Header />
-      <main className="flex items-center justify-center py-6">
-        <NavMain />
-        <Outlet />
+      <main className="flex flex-row justify-center gap-8 py-6 px-4">
+         <div className="w-64 shrink-0">
+          <NavMain />
+        </div>
+       <div className="w-full max-w-4xl">
+          <Outlet />
+        </div>
       </main>
+      {/* <Footer /> */}
     </div>
   )
 }
