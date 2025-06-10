@@ -9,6 +9,7 @@ import NavLog from './components/NavLog'
 import LogCave from './components/LogCave'
 import UserProfilePage from './components/UserProfilePage'
 import Dashboard from './components/Dashboard'
+import Explore from './components/Explore'
 
 const routes = createRoutesFromElements(
   <Route path="/" element={<App />}>
@@ -18,6 +19,7 @@ const routes = createRoutesFromElements(
 
     {/* User profile with dynamic username param */}
     <Route path="user/:username" element={<UserProfilePage />} />
+    <Route path='explore' element={<Explore />} />
   </Route>
 )
 
