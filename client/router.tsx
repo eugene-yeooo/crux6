@@ -15,7 +15,11 @@ const routes = createRoutesFromElements(
   <Route path="/" element={<App />}>
     <Route index element={<Dashboard />} />
     <Route path="log-nav" element={<NavLog />} />
-    <Route path="log-cave" element={<LogCave />} />
+      <Route path="log-nav/log-cave" element={<LogCave />} />
+      {/* <Route path="log-climb" element={<LogClimb />} />
+      <Route path="log-canyon" element={<LogCanyon />} />
+      <Route path="log-dive" element={<LogDive />} /> */}
+    
 
     {/* User profile with dynamic username param */}
     <Route path="user/:username" element={<UserProfilePage />} />
