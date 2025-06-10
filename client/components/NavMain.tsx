@@ -9,7 +9,7 @@ export default function NavMain() {
     }`;
 
   return (
-    <nav className="bg-gray-200 p-0 rounded shadow-lg w-full">
+    <nav className="bg-white p-0 rounded shadow-lg w-full border">
       <div className="flex flex-col space-y-2">
         <NavLink to="/log-nav" className={navLinkClass}>Log a send</NavLink>
         <NavLink to="/user/alicej" className={navLinkClass}>Profile</NavLink>
