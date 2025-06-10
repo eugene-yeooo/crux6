@@ -6,11 +6,11 @@ export async function seed(knex) {
   await knex('users').insert([
     {
       id: 1,
-      name: 'New User',
-      username: 'newuser',
-      email: 'newuser@example.com',
+      name: 'Eugene Yeo',
+      username: 'eugeneyeooo',
+      email: 'eugeneyeoooo@gmail.com',
       password_hash: '$2b$10$dummyhashfornewuser1234567890',
-      avatar_url: 'https://example.com/avatars/newuser.jpg',
+      avatar_url: 'https://lh3.googleusercontent.com/a/ACg8ocJ6d6Vh75QK5oaCnk2kdoRFUcB_7XZtRkqyHw6buZJA95WVZrPO=s96-c',
       bio: 'First user in the system.',
       country: 'New Zealand',
       created_at: new Date(),
