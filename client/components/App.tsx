@@ -2,6 +2,7 @@ import '../styles/main.css'
 import { Outlet } from 'react-router'
 import NavMain from './NavMain.tsx'
 import Header from './Header.tsx'
+import Footer from './Footer.tsx'
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
           <Outlet />
         </div>
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   )
 }
