@@ -5,8 +5,8 @@ import {
 } from 'react-router'
 
 import App from './components/App'
-import NavLog from './components/NavLog'
-import LogCave from './components/LogCave'
+import NavLog from './components/forms/NavLog'
+import LogCave from './components/forms/LogCave'
 import UserProfilePage from './components/profile page/UserProfilePage'
 import Dashboard from './components/Dashboard'
 import Explore from './components/Explore'
