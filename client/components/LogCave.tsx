@@ -26,7 +26,7 @@ export default function AddCave() {
 ]
 
   const labelStyle = 'block mb-1 font-medium'
-  const inputStyle = 'w-full p-2 border rounded-md'
+  const inputStyle = 'w-full p-1.5 border rounded-md'
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
