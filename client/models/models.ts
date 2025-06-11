@@ -16,6 +16,7 @@ export interface User {
   email: string
   avatar_url?: string
   bio?: string
+  country: string
 }
 
 export interface Adventure {

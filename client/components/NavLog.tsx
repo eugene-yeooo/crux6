@@ -5,7 +5,6 @@ export default function NavLog() {
     'flex items-center justify-center aspect-rectangle w-64 p-5 text-center border bg-white text-brandBlack text-base font-semibold rounded shadow-lg hover:bg-brandBlack hover:text-brandPrimary transition transition-transform hover:scale-105';
 
    return (
-    <div>
       <nav className="grid grid-cols-2 gap-6 max-w-xl mx-auto rounded-lg p-6">
         <NavLink to="log-climb" className={logButtonClass}>
           Climbing
@@ -26,6 +25,5 @@ export default function NavLog() {
           Other
         </NavLink>
       </nav>
-    </div>
   );
 }

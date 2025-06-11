@@ -1,4 +1,4 @@
-import { User } from '../../models/models'
+import { User } from '../models/models'
 
 export default function ProfileDetails({ user }: { user: User }) {
   return (
