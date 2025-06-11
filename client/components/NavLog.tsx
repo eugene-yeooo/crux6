@@ -5,7 +5,7 @@ export default function NavLog() {
     'flex items-center justify-center aspect-rectangle w-64 p-5 text-center border bg-white text-brandBlack text-base font-semibold rounded shadow-lg hover:bg-brandBlack hover:text-brandPrimary transition transition-transform hover:scale-105';
 
    return (
-      <nav className="grid grid-cols-2 gap-6 max-w-xl mx-auto rounded-lg p-6">
+      <nav className="bg-white grid grid-cols-2 gap-6 max-w-xl mx-10 rounded-lg shadow-lg p-6">
         <NavLink to="log-climb" className={logButtonClass}>
           Climbing
         </NavLink>
@@ -20,6 +20,12 @@ export default function NavLog() {
         </NavLink>
         <NavLink to="log-alpine" className={logButtonClass}>
           Alpine
+        </NavLink>
+        <NavLink to="log-hike" className={logButtonClass}>
+          Hike
+        </NavLink>
+        <NavLink to="log-roadtrip" className={logButtonClass}>
+          Roadtrip
         </NavLink>
         <NavLink to="log-other" className={logButtonClass}>
           Other
