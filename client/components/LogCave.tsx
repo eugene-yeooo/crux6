@@ -1,13 +1,16 @@
 import { useState } from 'react'
+import Select from 'react-select'
 import SubmitButton from './SubmitButton'
 
 export default function AddCave() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [formState, setFormState] = useState({
+    title: '',
     caveName: '',
     caveDate: '',
     companions: '',
     location: '',
+    technicalStyle: [],
     routeStyle: 'throughTrip',
     duration: '',
     tripNotes: '',
@@ -15,8 +18,15 @@ export default function AddCave() {
 
   const [mediaFiles, setMediaFiles] = useState<File[]>([])
 
+  const techStyleOptions = [
+  { value: 'SRT', label: 'SRT' },
+  { value: 'Pull-through', label: 'Pull-through' },
+  { value: 'Cave Dive', label: 'Cave Dive' },
+  { value: 'Non-technical', label: 'Non-technical' },
+]
+
   const labelStyle = 'block mb-1 font-medium'
-  const inputStyle = "w-full p-2 border rounded-md"
+  const inputStyle = 'w-full p-2 border rounded-md'
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -29,34 +39,38 @@ export default function AddCave() {
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setIsSubmitting(true);
+    e.preventDefault()
+    setIsSubmitting(true)
 
-  try {
-    // Your submit logic here, e.g., API call
-    // console.log('Submitting:', formState);
-    // await some async request
-  } catch (error) {
-    console.error('Submit error:', error);
-  } finally {
-    setIsSubmitting(false);
+    try {
+      // Your submit logic here
+    } catch (error) {
+      console.error('Submit error:', error)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
-};
-
 
   return (
     <div className="bg-white rounded-xl shadow-md p-6 max-w-3xl mx-10 mb-6">
-      <h1 className="text-2xl font-bold text-brandBlack text-center mb-6">
-        Log a Cave
-      </h1>
+      <h1 className="text-2xl font-bold text-brandBlack text-center mb-6">Log a Cave</h1>
       <form onSubmit={handleSubmit} className="space-y-5">
-
-        {/* grid form input */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label htmlFor="caveName" className={labelStyle}>
-              Cave Name
-            </label>
+            <label htmlFor="title" className={labelStyle}>Title</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              value={formState.title}
+              onChange={handleChange}
+              className={inputStyle}
+              placeholder="For multiple trips with the same objective"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="caveName" className={labelStyle}>Cave Name</label>
             <input
               type="text"
               id="caveName"
@@ -64,14 +78,12 @@ export default function AddCave() {
               value={formState.caveName}
               onChange={handleChange}
               className={inputStyle}
-              placeholder="Cave name"
+              placeholder="e.g. Harwoods Hole"
             />
           </div>
 
           <div>
-            <label htmlFor="caveDate" className={labelStyle}>
-              Date
-            </label>
+            <label htmlFor="caveDate" className={labelStyle}>Date</label>
             <input
               type="date"
               id="caveDate"
@@ -83,24 +95,7 @@ export default function AddCave() {
           </div>
 
           <div>
-            <label htmlFor="companions" className={labelStyle}>
-              Trip Members
-            </label>
-            <input
-              type="text"
-              id="companions"
-              name="companions"
-              value={formState.companions}
-              onChange={handleChange}
-              className={inputStyle}
-              placeholder="Names or group"
-            />
-          </div>
-
-          <div>
-            <label htmlFor="location" className={labelStyle}>
-              Location
-            </label>
+            <label htmlFor="location" className={labelStyle}>Location</label>
             <input
               type="text"
               id="location"
@@ -113,9 +108,24 @@ export default function AddCave() {
           </div>
 
           <div>
-            <label htmlFor="routeStyle" className={labelStyle}>
-              Route Style
-            </label>
+            <label className={labelStyle}>Technical Style</label>
+            <Select
+              isMulti
+              name="technicalStyle"
+              options={techStyleOptions}
+              className="basic-multi-select"
+              classNamePrefix="select"
+              onChange={(selectedOptions) =>
+                setFormState(prev => ({
+                  ...prev,
+                  technicalStyle: selectedOptions.map(opt => opt.value),
+                }))
+              }
+            />
+          </div>
+
+          <div>
+            <label htmlFor="routeStyle" className={labelStyle}>Route Style</label>
             <select
               id="routeStyle"
               name="routeStyle"
@@ -129,9 +139,20 @@ export default function AddCave() {
           </div>
 
           <div>
-            <label htmlFor="duration" className={labelStyle}>
-              Duration (hours)
-            </label>
+            <label htmlFor="companions" className={labelStyle}>Trip Members</label>
+            <input
+              type="text"
+              id="companions"
+              name="companions"
+              value={formState.companions}
+              onChange={handleChange}
+              className={inputStyle}
+              placeholder="Names or group"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="duration" className={labelStyle}>Duration (hours)</label>
             <input
               type="number"
               id="duration"
@@ -144,12 +165,8 @@ export default function AddCave() {
           </div>
         </div>
 
-
-        {/* back to full width input */}
         <div>
-          <label htmlFor="tripNotes" className={labelStyle}>
-            Trip Notes
-          </label>
+          <label htmlFor="tripNotes" className={labelStyle}>Trip Notes</label>
           <textarea
             id="tripNotes"
             name="tripNotes"
@@ -161,13 +178,8 @@ export default function AddCave() {
           />
         </div>
 
-
-
-        {/* media upload  */}
         <div>
-          <label htmlFor="media" className={labelStyle}>
-            Upload Media
-          </label>
+          <label htmlFor="media" className={labelStyle}>Upload Media</label>
           <input
             type="file"
             id="media"
@@ -181,8 +193,7 @@ export default function AddCave() {
             }}
             className="w-full p-2 border rounded-md bg-white"
           />
-          
-          {/* display what's being uploaded */}
+
           {mediaFiles.length > 0 && (
             <div className="flex flex-wrap gap-3 mt-4">
               {mediaFiles.map((file, idx) => (
@@ -197,11 +208,7 @@ export default function AddCave() {
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <video
-                      className="w-full h-full object-cover"
-                      controls
-                      muted
-                    >
+                    <video className="w-full h-full object-cover" controls muted>
                       <source src={URL.createObjectURL(file)} />
                     </video>
                   )}
@@ -211,9 +218,9 @@ export default function AddCave() {
           )}
         </div>
 
-        <div className='text-center my-6'>
+        <div className="text-center my-6">
           <SubmitButton loading={isSubmitting}>Log Cave</SubmitButton>
-        </div>  
+        </div>
       </form>
     </div>
   )
