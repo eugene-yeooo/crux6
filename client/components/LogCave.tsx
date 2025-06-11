@@ -1,16 +1,20 @@
-// import { useAddCave } from '../hooks/useFruits.ts'
-import { useForm } from 'react-hook-form'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 import { useState } from 'react'
 
 export default function AddCave() {
-  const [formState, setFormState] = useState({})
+  const [formState, setFormState] = useState({
+    caveName: '',
+    caveDate: '',
+    companions: '',
+    location: '',
+    routeStyle: 'throughTrip',
+    duration: '',
+    tripNotes: '',
+  })
+
+  const labelStyle = 'block mb-1 font-medium'
 
   const handleChange = (
-    evt: ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
+    evt: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = evt.target
     setFormState((prev) => ({
@@ -19,104 +23,131 @@ export default function AddCave() {
     }))
   }
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    console.log('Cave log:', formState)
+    // Add submission logic here
+  }
+
   return (
-    <div>
-      <h3 className="flex items-center justify-center py-6 mb-6">Log A Cave</h3>
+    <div className="bg-white rounded-xl shadow-md p-6 max-w-3xl mx-10 mb-6">
+      <h3 className="text-2xl font-semibold text-brandBlack text-center mb-6">
+        Log a Cave
+      </h3>
+      <form onSubmit={handleSubmit} className="space-y-5">
+        <div>
+          <label htmlFor="caveName" className={labelStyle}>
+            Cave Name
+          </label>
+          <input
+            type="text"
+            id="caveName"
+            name="caveName"
+            value={formState.caveName}
+            onChange={handleChange}
+            className="w-full p-2 border rounded-md"
+            placeholder="Cave name"
+          />
+        </div>
 
-      <form>
-        <label htmlFor="caveName" className="mb-10">
-          Cave name
-        </label>
-        <input
-          type="text"
-          id="caveName"
-          name="caveName"
-          placeholder="Cave name"
-          onChange={handleChange}
-          value={formState.name}
-        />
-        <br />
+        <div>
+          <label htmlFor="caveDate" className={labelStyle}>
+            Date
+          </label>
+          <input
+            type="date"
+            id="caveDate"
+            name="caveDate"
+            value={formState.caveDate}
+            onChange={handleChange}
+            className="w-full p-2 border rounded-md"
+          />
+        </div>
 
-        <label htmlFor="caveDate" className="label">
-          Date
-        </label>
-        <input
-          type="date"
-          id="caveDate"
-          name="caveName"
-          placeholder="Cave name"
-          onChange={handleChange}
-          value={formState.date}
-        />
-        <br />
+        <div>
+          <label htmlFor="companions" className={labelStyle}>
+            Trip Companions
+          </label>
+          <input
+            type="text"
+            id="companions"
+            name="companions"
+            value={formState.companions}
+            onChange={handleChange}
+            className="w-full p-2 border rounded-md"
+            placeholder="Names or group"
+          />
+        </div>
 
-        <label htmlFor="caveDate" className="label">
-          Trip companions
-        </label>
-        <input
-          type="text"
-          id="companions"
-          name="companions"
-          placeholder=""
-          onChange={handleChange}
-          value={formState.companions}
-        />
-        <br />
+        <div>
+          <label htmlFor="location" className={labelStyle}>
+            Location
+          </label>
+          <input
+            type="text"
+            id="location"
+            name="location"
+            value={formState.location}
+            onChange={handleChange}
+            className="w-full p-2 border rounded-md"
+            placeholder="e.g. Three Fingers Cave"
+          />
+        </div>
 
-        <label htmlFor="location" className="label">
-          Location
-        </label>
-        <input
-          type="text"
-          id="location"
-          name="location"
-          placeholder=""
-          onChange={handleChange}
-          value={formState.location}
-        />
-        <br />
+        <div>
+          <label htmlFor="routeStyle" className={labelStyle}>
+            Route Style
+          </label>
+          <select
+            id="routeStyle"
+            name="routeStyle"
+            value={formState.routeStyle}
+            onChange={handleChange}
+            className="w-full p-2 border rounded-md"
+          >
+            <option value="throughTrip">Through-trip</option>
+            <option value="inOut">In/Out</option>
+          </select>
+        </div>
 
-        <label htmlFor="routeStyle" className="label">
-          Route style
-        </label>
-        <select
-          id="routeStyle"
-          name="routeStyle"
-          value={formState.routeStyle}
-          onChange={handleChange}
-        >
-          <option value="throughTrip">Through-trip</option>
-          <option value="inOut">In/Out</option>
-        </select>
-        <br />
+        <div>
+          <label htmlFor="duration" className={labelStyle}>
+            Duration (hours)
+          </label>
+          <input
+            type="number"
+            id="duration"
+            name="duration"
+            value={formState.duration}
+            onChange={handleChange}
+            className="w-full p-2 border rounded-md"
+            placeholder="e.g. 5"
+          />
+        </div>
 
-        <label htmlFor="duration" className="label">
-          Duration
-        </label>
-        <input
-          type="number"
-          id="duration"
-          name="duration"
-          placeholder="i.e hours"
-          onChange={handleChange}
-          value={formState.duration}
-        />
-        <br />
+        <div>
+          <label htmlFor="tripNotes" className={labelStyle}>
+            Trip Notes
+          </label>
+          <textarea
+            id="tripNotes"
+            name="tripNotes"
+            rows={4}
+            value={formState.tripNotes}
+            onChange={handleChange}
+            className="w-full p-2 border rounded-md resize-none"
+            placeholder="Route description, entrance name, SRT, etc."
+          />
+        </div>
 
-        <label htmlFor="tripNotes" className="label">
-          Trip notes
-        </label>
-        <textarea
-          rows={5}
-          id="tripNotes"
-          name="tripNotes"
-          placeholder="e.g. route description, entrance name, SRT(?), number of pitches, notes for future trips, etc"
-          onChange={handleChange}
-          value={formState.tripNotes}
-        />
-
-        <br />
-        <button>Log Cave</button>
+        <div className="text-center mt-6">
+          <button
+            type="submit"
+            className="bg-brandBlack text-white px-6 py-2 rounded hover:bg-brandPrimary hover:text-brandBlack transition"
+          >
+            Log Cave
+          </button>
+        </div>
       </form>
     </div>
   )
