@@ -20,7 +20,7 @@ export default function AdventureSummaryStats({
         <StatBox label="Total Sends" value="386" />
         <StatBox label="Distance Climbed" value="12.6km" />      
         <StatBox label="Canyons Logged" value="42"/>
-        <StatBox label="Hours Caving" value="106" />
+        <StatBox label="Hours Caving" value="592" />
       </div>
     </div>
   )

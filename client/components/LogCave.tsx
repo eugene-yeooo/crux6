@@ -16,11 +16,12 @@ export default function AddCave() {
   const [mediaFiles, setMediaFiles] = useState<File[]>([])
 
   const labelStyle = 'block mb-1 font-medium'
+  const inputStyle = "w-full p-2 border rounded-md"
 
   const handleChange = (
-    evt: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    const { name, value } = evt.target
+    const { name, value } = e.target
     setFormState((prev) => ({
       ...prev,
       [name]: value,
@@ -62,7 +63,7 @@ export default function AddCave() {
               name="caveName"
               value={formState.caveName}
               onChange={handleChange}
-              className="w-full p-2 border rounded-md"
+              className={inputStyle}
               placeholder="Cave name"
             />
           </div>
@@ -77,7 +78,7 @@ export default function AddCave() {
               name="caveDate"
               value={formState.caveDate}
               onChange={handleChange}
-              className="w-full p-2 border rounded-md"
+              className={inputStyle}
             />
           </div>
 
@@ -91,7 +92,7 @@ export default function AddCave() {
               name="companions"
               value={formState.companions}
               onChange={handleChange}
-              className="w-full p-2 border rounded-md"
+              className={inputStyle}
               placeholder="Names or group"
             />
           </div>
@@ -106,8 +107,8 @@ export default function AddCave() {
               name="location"
               value={formState.location}
               onChange={handleChange}
-              className="w-full p-2 border rounded-md"
-              placeholder="e.g. Three Fingers Cave"
+              className={inputStyle}
+              placeholder="e.g. Golden Bay"
             />
           </div>
 
@@ -120,7 +121,7 @@ export default function AddCave() {
               name="routeStyle"
               value={formState.routeStyle}
               onChange={handleChange}
-              className="w-full p-2 border rounded-md"
+              className={inputStyle}
             >
               <option value="throughTrip">Through-trip</option>
               <option value="inOut">In/Out</option>
@@ -137,7 +138,7 @@ export default function AddCave() {
               name="duration"
               value={formState.duration}
               onChange={handleChange}
-              className="w-full p-2 border rounded-md"
+              className={inputStyle}
               placeholder="e.g. 5"
             />
           </div>
@@ -181,6 +182,7 @@ export default function AddCave() {
             className="w-full p-2 border rounded-md bg-white"
           />
           
+          {/* display what's being uploaded */}
           {mediaFiles.length > 0 && (
             <div className="flex flex-wrap gap-3 mt-4">
               {mediaFiles.map((file, idx) => (
