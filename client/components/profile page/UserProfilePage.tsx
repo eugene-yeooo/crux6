@@ -5,7 +5,7 @@ import { Adventure } from '../../models/models'
 
 import ProfileDetails from './ProfileDetails'
 import ProfileSummaryStats from './ProfileSummaryStats'
-import NavProfileAdventureFilter from './NavProfileAdventureFilter'
+import NavProfileFilter from './NavProfileFilter'
 import ProfileLogList from './ProfileLogList'
 import NotableSends from './NotableSends'
 
@@ -41,7 +41,7 @@ export default function UserProfilePage() {
       {user && <ProfileDetails user={user} />}
       <ProfileSummaryStats adventures={adventures} />
       <NotableSends adventures={adventures} />
-      <NavProfileAdventureFilter selected={filter} onChange={setFilter} />
+      <NavProfileFilter selected={filter} onChange={setFilter} />
       <ProfileLogList adventures={filteredAdventures} />
     </div>
   )

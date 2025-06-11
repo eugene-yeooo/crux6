@@ -30,7 +30,7 @@ function StatBox({ label, value }: { label: string; value: string }) {
   return (
     <div className="bg-white rounded-lg p-6 text-center shadow-lg">
       <div className="text-3xl font-bold text-brandBlack pb-2">{value}</div>
-      <div className="text-sm text-gray-700">{label}</div>
+      <div className="text-sm text-gray-700 font-semibold">{label}</div>
     </div>
   )
 }
