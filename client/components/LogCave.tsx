@@ -7,8 +7,8 @@ export default function AddCave() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [formState, setFormState] = useState({
     title: '',
-    caveName: '',
-    caveDate: '',
+    objectiveName: '',
+    date: '',
     companions: '',
     location: '',
     technicalStyle: [''],
@@ -71,12 +71,12 @@ export default function AddCave() {
           </div>
 
           <div>
-            <label htmlFor="caveName" className={labelStyle}>Cave Name</label>
+            <label htmlFor="objectiveName" className={labelStyle}>Cave Name</label>
             <input
               type="text"
-              id="caveName"
-              name="caveName"
-              value={formState.caveName}
+              id="objectiveName"
+              name="objectiveName"
+              value={formState.objectiveName}
               onChange={handleChange}
               className={inputStyle}
               placeholder="e.g. Harwoods Hole"
@@ -85,14 +85,15 @@ export default function AddCave() {
           </div>
 
           <div>
-            <label htmlFor="caveDate" className={labelStyle}>Date</label>
+            <label htmlFor="date" className={labelStyle}>Date</label>
             <input
               type="date"
-              id="caveDate"
-              name="caveDate"
-              value={formState.caveDate}
+              id="date"
+              name="date"
+              value={formState.date}
               onChange={handleChange}
               className={inputStyle}
+              required
             />
           </div>
 
@@ -106,6 +107,7 @@ export default function AddCave() {
               onChange={handleChange}
               className={inputStyle}
               placeholder="e.g. Golden Bay"
+              required
             />
           </div>
 
@@ -166,6 +168,8 @@ export default function AddCave() {
               onChange={handleChange}
               className={inputStyle}
               placeholder="e.g. 5"
+              min={1}
+              required
             />
           </div>
         </div>
