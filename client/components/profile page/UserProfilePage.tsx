@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useParams } from 'react-router'
-import { useUserProfile, useUserAdventures } from '../../hooks/api'
-import { Adventure } from '../../models/models'
+import { useUserProfile, useUserLogs } from '../../hooks/api'
+import { Log } from '../../models/models'
 
 import ProfileDetails from './ProfileDetails'
 import ProfileSummaryStats from './ProfileSummaryStats'
@@ -20,29 +20,28 @@ export default function UserProfilePage() {
   } = useUserProfile(username)
 
   const {
-    data: adventureData,
-    isLoading: loadingAdventures,
-    error: adventureError,
-  } = useUserAdventures(username)
-
-  if (loadingProfile || loadingAdventures) return <p>Loading...</p>
-  if (profileError || adventureError) return <p>Error loading profile data.</p>
+    data: logData,
+    isLoading: loadingLogs,
+    error: logError,
+  } = useUserLogs(username) 
+  if (loadingProfile || loadingLogs) return <p>Loading...</p>
+  if (profileError || logError) return <p>Error loading profile data.</p>
 
   const user = profileData?.user
-  const adventures: Adventure[] = adventureData?.adventures ?? []
+  const logs: Log[] = logData?.logs ?? []
 
-  const filteredAdventures =
+  const filteredLogs =
     filter === 'all'
-      ? adventures
-      : adventures.filter((adv) => adv.type === filter)
+      ? logs
+      : logs.filter((log) => log.type === filter)
 
   return (
     <div>
       {user && <ProfileDetails user={user} />}
-      <ProfileSummaryStats adventures={adventures} />
-      <NotableSends adventures={adventures} />
+      <ProfileSummaryStats logs={logs} />
+      <NotableSends logs={logs} />
       <NavProfileFilter selected={filter} onChange={setFilter} />
-      <ProfileLogList adventures={filteredAdventures} />
+      <ProfileLogList logs={filteredLogs} />
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import { Adventure } from '../../models/models'
 import LogCard from '../LogCard'
 
-export default function AdventureLogList({
+export default function LogList({
   adventures,
 }: {
   adventures: Adventure[]
