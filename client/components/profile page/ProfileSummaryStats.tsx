@@ -1,13 +1,13 @@
-import { Adventure } from '../../models/models'
+import { Log } from '../../models/models'
 
-export default function AdventureSummaryStats({
-  adventures,
+export default function LogSummaryStats({
+  logs,
 }: {
-  adventures: Adventure[]
+  logs: Log[]
 }) {
-  const total = adventures.length
-  const canyons = adventures.filter((a) => a.type === 'canyon')
-  const climbs = adventures.filter((a) => a.type === 'climb')
+  const total = logs.length
+  const canyons = logs.filter((l) => l.type === 'canyon')
+  const climbs = logs.filter((l) => l.type === 'climb')
   const hardest =
     climbs
       .map((c) => c.grade || '')
@@ -17,9 +17,9 @@ export default function AdventureSummaryStats({
   return (
     <div className="p- max-w-4xl mx-auto mb-6">
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <StatBox label="Total Sends" value="386" />
-        <StatBox label="Distance Climbed" value="12.6km" />      
-        <StatBox label="Canyons Logged" value="42"/>
+        <StatBox label="Total Sends" value={String(total)} />
+        <StatBox label="Distance Climbed" value="12.6km" />
+        <StatBox label="Canyons Logged" value={String(canyons.length)} />
         <StatBox label="Hours Caving" value="592" />
       </div>
     </div>

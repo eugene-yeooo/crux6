@@ -14,7 +14,7 @@ export default function AddCave() {
     technicalStyle: [''],
     routeStyle: 'throughTrip',
     duration: '',
-    tripNotes: '',
+    notes: '',
   })
 
   const [mediaFiles, setMediaFiles] = useState<File[]>([])
@@ -175,12 +175,12 @@ export default function AddCave() {
         </div>
 
         <div>
-          <label htmlFor="tripNotes" className={labelStyle}>Trip Notes</label>
+          <label htmlFor="notes" className={labelStyle}>Trip Notes</label>
           <textarea
-            id="tripNotes"
-            name="tripNotes"
+            id="notes"
+            name="notes"
             rows={4}
-            value={formState.tripNotes}
+            value={formState.notes}
             onChange={handleChange}
             className="w-full p-2 border rounded-md resize-none"
             placeholder="Route description, entrance name, SRT, etc."
