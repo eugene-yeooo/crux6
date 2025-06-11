@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { useParams } from 'react-router'
-import { useUserProfile, useUserAdventures } from '../hooks/api'
-import { Adventure } from '../models/models'
+import { useUserProfile, useUserAdventures } from '../../hooks/api'
+import { Adventure } from '../../models/models'
 
 import ProfileDetails from './ProfileDetails'
 import ProfileSummaryStats from './ProfileSummaryStats'
 import NavProfileAdventureFilter from './NavProfileAdventureFilter'
 import ProfileLogList from './ProfileLogList'
+import NotableSends from './NotableSends'
 
 export default function UserProfilePage() {
   const { username } = useParams<{ username: string }>()
@@ -39,6 +40,7 @@ export default function UserProfilePage() {
     <div>
       {user && <ProfileDetails user={user} />}
       <ProfileSummaryStats adventures={adventures} />
+      <NotableSends adventures={adventures} />
       <NavProfileAdventureFilter selected={filter} onChange={setFilter} />
       <ProfileLogList adventures={filteredAdventures} />
     </div>

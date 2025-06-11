@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import request from 'superagent'
-import { Adventure } from '../../models/models'
+import { Adventure } from '../models/models'
 
 const rootURL = new URL('/api/v1', document.baseURI)
 

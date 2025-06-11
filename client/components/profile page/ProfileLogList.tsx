@@ -1,4 +1,4 @@
-import { Adventure } from '../models/models'
+import { Adventure } from '../../models/models'
 
 export default function AdventureLogList({
   adventures,

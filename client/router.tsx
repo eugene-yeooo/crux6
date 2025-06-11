@@ -7,7 +7,7 @@ import {
 import App from './components/App'
 import NavLog from './components/NavLog'
 import LogCave from './components/LogCave'
-import UserProfilePage from './components/UserProfilePage'
+import UserProfilePage from './components/profile page/UserProfilePage'
 import Dashboard from './components/Dashboard'
 import Explore from './components/Explore'
 
