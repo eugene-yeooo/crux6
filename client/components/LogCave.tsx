@@ -10,7 +10,7 @@ export default function AddCave() {
     caveDate: '',
     companions: '',
     location: '',
-    technicalStyle: [],
+    technicalStyle: [''],
     routeStyle: 'throughTrip',
     duration: '',
     tripNotes: '',
@@ -108,13 +108,15 @@ export default function AddCave() {
           </div>
 
           <div>
-            <label className={labelStyle}>Technical Style</label>
+            <label htmlFor="technicalStyle" className={labelStyle}>Technical Style</label>
             <Select
               isMulti
+              inputId="technicalStyle"
               name="technicalStyle"
               options={techStyleOptions}
               className="basic-multi-select"
               classNamePrefix="select"
+              value={techStyleOptions.filter(opt => formState.technicalStyle.includes(opt.value))}
               onChange={(selectedOptions) =>
                 setFormState(prev => ({
                   ...prev,
@@ -122,6 +124,7 @@ export default function AddCave() {
                 }))
               }
             />
+
           </div>
 
           <div>
