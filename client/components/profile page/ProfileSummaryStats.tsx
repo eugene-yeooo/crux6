@@ -17,9 +17,9 @@ export default function LogSummaryStats({
   return (
     <div className="p- max-w-4xl mx-auto mb-6">
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <StatBox label="Total Sends" value={String(total)} />
+        <StatBox label="Total Sends" value="869" />
         <StatBox label="Distance Climbed" value="12.6km" />
-        <StatBox label="Canyons Logged" value={String(canyons.length)} />
+        <StatBox label="Canyons Logged" value="42" />
         <StatBox label="Hours Caving" value="592" />
       </div>
     </div>

@@ -4,7 +4,7 @@ export default function NavMain() {
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     `transition-colors px-3 py-4 font-medium ${
       isActive
-        ? 'bg-brandPrimary text-brandBlack font-black'
+        ? 'bg-brandPrimary text-brandBlack font-extrabold'
         : 'text-brandBlack hover:bg-brandBlack hover:text-white'
     }`;
 
