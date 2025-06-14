@@ -3,7 +3,7 @@ import * as db from '../db/logs'
 
 const router = express.Router()
 
-// GET /api/users/:username/logs
+// GET /api/v1/users/:username/logs
 router.get('/users/:username/logs', async (req, res) => {
   try {
     const username = req.params.username
