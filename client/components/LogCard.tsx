@@ -1,6 +1,9 @@
 export default function LogCard({ log }) {
   
   const labelStyle = 'font-semibold'
+
+  console.log(log.media)
+
   
   return (
     <div className="rounded-lg shadow p-4 bg-white space-y-2">
@@ -9,6 +12,30 @@ export default function LogCard({ log }) {
       <p>{log.location}</p>
       <p className="text-sm">{log.date}</p>
       
+       {/* Media files */}
+      {log.media && log.media.length > 0 && (
+        <div className="flex flex-wrap gap-4 mt-2">
+          {log.media.map((file, i) =>
+            file.type === 'image' ? (
+              <img
+                key={i}
+                src={file.url}
+                alt={`Log media ${i + 1}`}
+                className="w-40 h-40 object-cover rounded"
+              />
+            ) : file.type === 'video' ? (
+              <video
+                key={i}
+                controls
+                className="w-60 rounded"
+              >
+                <source src={file.url} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            ) : null
+          )}
+        </div>
+      )}
       
 
       {/* Subtable-specific details */}

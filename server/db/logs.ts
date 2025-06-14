@@ -9,7 +9,12 @@ export async function getLogsByUsername(username: string) {
     .select(
       'logs.*',
       'users.username',
-      connection.raw('COALESCE(json_group_array(media.url), "[]") as media_urls')
+      connection.raw(`COALESCE(
+  json_group_array(
+    json_object('url', media.url, 'type', media.type)
+  ), '[]'
+) as media`)
+
     )
     .groupBy('logs.id')
 
@@ -39,7 +44,7 @@ export async function getLogsByUsername(username: string) {
   // Step 4: Combine shared + specific log data (aka a 'merge')
   const fullLogs = baseLogs.map(log => ({
     ...log,
-    media: JSON.parse(log.media_urls),
+    media: JSON.parse(log.media),
     details:
       log.type === 'cave' ? caveMap[log.id] ?? null
       // : log.type === 'climb' ? climbMap[log.id] ?? null
