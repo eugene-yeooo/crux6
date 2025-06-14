@@ -9,11 +9,7 @@ export async function getLogsByUsername(username: string) {
     .select(
       'logs.*',
       'users.username',
-      connection.raw(`COALESCE(
-  json_group_array(
-    json_object('url', media.url, 'type', media.type)
-  ), '[]'
-) as media`)
+      connection.raw(`COALESCE(json_group_array(json_object('url', media.url, 'type', media.type, 'caption', media.caption)), '[]') as media`)
 
     )
     .groupBy('logs.id')

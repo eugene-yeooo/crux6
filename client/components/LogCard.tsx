@@ -12,30 +12,7 @@ export default function LogCard({ log }) {
       <p>{log.location}</p>
       <p className="text-sm">{log.date}</p>
       
-       {/* Media files */}
-      {log.media && log.media.length > 0 && (
-        <div className="flex flex-wrap gap-4 mt-2">
-          {log.media.map((file, i) =>
-            file.type === 'image' ? (
-              <img
-                key={i}
-                src={file.url}
-                alt={`Log media ${i + 1}`}
-                className="w-40 h-40 object-cover rounded"
-              />
-            ) : file.type === 'video' ? (
-              <video
-                key={i}
-                controls
-                className="w-60 rounded"
-              >
-                <source src={file.url} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            ) : null
-          )}
-        </div>
-      )}
+       
       
 
       {/* Subtable-specific details */}
@@ -92,6 +69,33 @@ export default function LogCard({ log }) {
           <span className={labelStyle}>Notes:</span> {log.notes}
         </p>
       )}
+
+       {/* Media files */}
+      {log.media && log.media.length > 0 && (
+        <div className="flex flex-wrap gap-4 mt-2">
+          {log.media.map((file, i) =>
+            file.type === 'photo' ? (
+              <img
+                key={i}
+                src={file.url}
+                alt={`Log media ${i + 1}`}
+                className="h-96 object-cover rounded"
+              />
+            ) : file.type === 'video' ? (
+              // eslint-disable-next-line jsx-a11y/media-has-caption
+              <video
+                key={i}
+                controls
+                className="w-60 rounded"
+              >
+                <source src={file.url} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            ) : null
+          )}
+        </div>
+      )}
+
     </div>
   )
 }
