@@ -41,6 +41,9 @@ export default function UserProfilePage() {
       <ProfileSummaryStats logs={logs} />
       <NotableSends logs={logs} />
       <NavProfileFilter selected={filter} onChange={setFilter} />
+      <div className="bg-white shadow-lg rounded-lg p-6 max-w-4xl mx-auto my-2">
+        <p className="text-center text-gray-500 font-mono">interactive map API</p>
+      </div>
       <ProfileLogList logs={filteredLogs} />
     </div>
   )
