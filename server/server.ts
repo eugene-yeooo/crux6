@@ -19,6 +19,8 @@ server.use(cors('*' as CorsOptions))
 
 server.use('/api/v1/users', userRoutes)
 server.use('/api/v1', logRoutes)
+server.use('/uploads', express.static(Path.resolve('uploads'))) // for serving web-accessible media URLs
+
 
 if (process.env.NODE_ENV === 'production') {
   server.use(express.static(Path.resolve('public')))
