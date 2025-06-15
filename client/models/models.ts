@@ -1,12 +1,11 @@
 export interface CaveLog {
   logId: number
-  caveName: string
+  objectiveName: string
   caveDate: number
   tripCompanions: string
   caveLocation: string
   tripDuration: number
-  tripNotes: 
-
+  tripNotes: string
 }
 
 export interface User {
@@ -16,9 +15,10 @@ export interface User {
   email: string
   avatar_url?: string
   bio?: string
+  country: string
 }
 
-export interface Adventure {
+export interface Log {
   id: number
   user_id: number
   type: 'climb' | 'canyon' | 'cave' | 'dive'

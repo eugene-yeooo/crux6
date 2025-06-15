@@ -3,7 +3,7 @@ import express from 'express'
 import cors, { CorsOptions } from 'cors'
 
 import userRoutes from './routes/users.ts'
-import adventureRoutes from './routes/adventures.ts'
+import logRoutes from './routes/logs.ts'
 
 const server = express()
 
@@ -18,7 +18,7 @@ server.use(express.json())
 server.use(cors('*' as CorsOptions))
 
 server.use('/api/v1/users', userRoutes)
-server.use('/api/v1', adventureRoutes)
+server.use('/api/v1', logRoutes)
 
 if (process.env.NODE_ENV === 'production') {
   server.use(express.static(Path.resolve('public')))
